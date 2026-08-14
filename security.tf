@@ -1,4 +1,5 @@
 resource "aws_security_group" "this" {
+  # checkov:skip=CKV2_AWS_5:False positive. This SG is attached to the interface endpoints via security_group_ids; the reference goes through a local, which the check cannot resolve.
   count = var.create_security_group ? 1 : 0
 
   name_prefix = "${var.name_prefix}-"
